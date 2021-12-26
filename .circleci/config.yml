@@ -18,9 +18,9 @@ jobs:
             npm install
             npm run build
       - slack/notify:
-          channel: nanodegree
-          event: fail
-          template: basic_fail_1
+           channel: nanodegree
+           event: fail
+           template: basic_fail_1
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
@@ -39,9 +39,9 @@ jobs:
             npm install
             npm run build
        - slack/notify:
-          channel: nanodegree
-          event: fail
-          template: basic_fail_1
+           channel: nanodegree
+           event: fail
+           template: basic_fail_1
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
