@@ -102,7 +102,7 @@ jobs:
             npm audit --audit-level=critical
 
   scan-backend:
-     docker:
+    docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
@@ -117,7 +117,7 @@ jobs:
             npm audit --audit-level=critical
 
   deploy-infrastructure:
-      docker:
+    docker:
        - image: amazon/aws-cli
     steps:
       - checkout
