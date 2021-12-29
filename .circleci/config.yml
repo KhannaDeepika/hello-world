@@ -161,8 +161,7 @@ jobs:
 workflows:
  default:
     jobs:
-      - setup_aws_cli:
-          context: Udacity
+      - setup_aws_cli
       - build-frontend:
           context: Udacity
       - build-backend:
