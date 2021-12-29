@@ -3,7 +3,7 @@ orbs:
   slack: circleci/slack@4.5.1
 
 commands:
-  destroy-environment:
+ destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
     parameters:
       # Add parameter here   
@@ -16,7 +16,7 @@ commands:
             aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
 
 jobs:
-  build-frontend:
+ build-frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -37,7 +37,7 @@ jobs:
           paths: [frontend/node_modules]
           key: frontend-build
 
-  build-backend:
+ build-backend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -58,7 +58,7 @@ jobs:
           paths: [backend/node_modules]
           key: backend-build
 
-  test-frontend:
+ test-frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -72,7 +72,7 @@ jobs:
             npm install
             npm run test
                 
-  test-backend:
+ test-backend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -86,7 +86,7 @@ jobs:
             npm install
             npm run test
 
-  scan-frontend:
+ scan-frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -101,7 +101,7 @@ jobs:
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
 
-  scan-backend:
+ scan-backend:
      docker:
       - image: circleci/node:13.8.0
     steps:
@@ -116,7 +116,7 @@ jobs:
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
 
-    deploy-infrastructure:
+ deploy-infrastructure:
       docker:
       - image: amazon/aws-cli
     steps:
@@ -151,7 +151,7 @@ jobs:
 
   
 workflows:
-  default:
+ default:
     jobs:
       - build-frontend:
           context: Udacity
