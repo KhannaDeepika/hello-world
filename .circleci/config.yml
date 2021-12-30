@@ -160,7 +160,27 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/.circleci/ansible/inventory.txt                              
+            - project/.circleci/ansible/inventory.txt
+
+  configure_infrastructure: 
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["30:fc:2a:af:8f:cc:1c:30:ea:91:bb:b6:a9:f1:4d:0c"]
+      - attach_workspace:
+          at: ~/ 
+      - run:
+          name: Install dependencies
+          command: |
+            # install the dependencies needed for your playbook
+            apk add --update ansible 
+      - run:
+          name: Configure server
+          command: |
+            cd .circleci/ansible
+            ansible-playbook -i inventory.txt configure-server.yml                                        
 
   
 workflows:
@@ -183,3 +203,5 @@ workflows:
       - deploy-infrastructure:
           requires: [setup_aws_cli, test-frontend, test-backend, scan-frontend, scan-backend]
           context: Udacity
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]    
