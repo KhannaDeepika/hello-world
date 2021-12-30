@@ -177,4 +177,4 @@ workflows:
       - scan-frontend:
           requires: [build-frontend]
       - deploy-infrastructure:
-          requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+          requires: [setup_aws_cli, test-frontend, test-backend, scan-frontend, scan-backend]
