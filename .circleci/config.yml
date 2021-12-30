@@ -1,7 +1,7 @@
 version: 2.1
 orbs: 
   slack: circleci/slack@4.5.1
-  aws-ecr: circleci/aws-ecr@0.0.4
+  aws-cli: circleci/aws-cli@1.4.0
 
 commands:
   destroy-environment:
