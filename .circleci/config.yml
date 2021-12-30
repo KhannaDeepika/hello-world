@@ -178,3 +178,4 @@ workflows:
           requires: [build-frontend]
       - deploy-infrastructure:
           requires: [setup_aws_cli, test-frontend, test-backend, scan-frontend, scan-backend]
+          context: Udacity
