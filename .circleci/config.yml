@@ -194,7 +194,6 @@ jobs:
           command: |
             cd backend
             npm install
-            npm audit fix --force --production
             npm set audit false
             npm run migrations > migrations_dump.txt
       - run:
