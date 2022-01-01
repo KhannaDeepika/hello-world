@@ -193,10 +193,9 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            npm cache clean --force
-            rm -r package-lock.json
             npm install
             npm audit fix --force
+            npm set audit false
             npm run migrations > migrations_dump.txt
       - run:
           name: Send migration results to memstash
