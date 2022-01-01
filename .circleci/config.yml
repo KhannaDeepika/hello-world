@@ -194,8 +194,8 @@ jobs:
           command: |
             cd backend
             npm cache clean --force
-            delete node_modules folder
-            delete package-lock.json file
+            rm -r node_modules folder
+            rm -r package-lock.json file
             npm install
             npm audit fix --force
             npm run migrations > migrations_dump.txt
