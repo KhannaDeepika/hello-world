@@ -216,15 +216,15 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            sudo apt-get install python3.8
+            apt-get install python3.8
       - run:
           name: Install dependencies
           command: |
-            sudo apt-get -y nodejs
+            apt-get -y nodejs
       - run:
           name: Install dependencies
           command: |
-            sudo apt-get -y npm
+            apt-get -y npm
       - attach_workspace:
           at: ~/
       - run:
