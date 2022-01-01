@@ -213,7 +213,7 @@ jobs:
           name: Install tar utility
           command: |
             apt-get install -y tar gzip
-        - run:
+      - run:
           name: Install dependencies
           command: |
             apk add --update ansible
@@ -315,4 +315,4 @@ workflows:
       - deploy-frontend:
           requires: [run-migrations:]
       - deploy-backend:
-          requires: [run-migrations:]
+          requires: [run-migrations:]        
