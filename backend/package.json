@@ -91,7 +91,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "resolutions": {
-    "minimist": "^13.7.0"
+    "validator": "^13.7.0"
   },
   "jest": {
     "moduleFileExtensions": [
