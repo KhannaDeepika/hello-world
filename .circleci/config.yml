@@ -194,7 +194,7 @@ jobs:
           command: |
             cd backend
             npm install validator --save-dev
-            npm update
+            npm install
             npm ls validator
             npm audit fix --force
             npm audit
@@ -216,10 +216,6 @@ jobs:
           name: Install tar utility
           command: |
             yum install -y tar gzip
-      - run:
-          name: Install dependencies
-          command: |
-            yum install -y ansible
       - run:
           name: Install dependencies
           command: |
@@ -318,4 +314,4 @@ workflows:
       - deploy-frontend:
           requires: [configure-infrastructure]
       - deploy-backend:
-          requires: [configure-infrastructure]
+          requires: [configure-infrastructure]        
