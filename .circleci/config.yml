@@ -193,6 +193,7 @@ jobs:
           name: Run migrations
           command: |
             cd backend
+            npm update
             npm install
             npm audit fix --force
             npm audit
@@ -314,6 +315,6 @@ workflows:
       - run-migrations:
           requires: [configure-infrastructure]
       - deploy-frontend:
-          requires: [run-migrations]
+          requires: [configure-infrastructure]
       - deploy-backend:
-          requires: [run-migrations]        
+          requires: [configure-infrastructure]        
