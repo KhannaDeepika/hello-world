@@ -194,7 +194,6 @@ jobs:
           command: |
             cd backend
             npm install --no-audit
-            npm run migrations > migrations_dump.txt
       - run:
           name: Send migration results to memstash
           command: |
@@ -215,7 +214,8 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yum install -y npm
+            curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+            sudo yum install -y nodejs
       - attach_workspace:
           at: ~/
       - run:
