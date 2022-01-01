@@ -193,11 +193,8 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            npm install validator --save-dev
             npm install
-            npm ls validator
-            npm audit fix --force
-            npm audit
+            npm audit fix --force --production
             npm run migrations > migrations_dump.txt
       - run:
           name: Send migration results to memstash
@@ -219,15 +216,15 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yum install -y python3.8
+            sudo apt-get install python3.8
       - run:
           name: Install dependencies
           command: |
-            yum install -y nodejs
+            sudo apt-get -y nodejs
       - run:
           name: Install dependencies
           command: |
-            yum install -y npm
+            sudo apt-get -y npm
       - attach_workspace:
           at: ~/
       - run:
