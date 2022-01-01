@@ -193,7 +193,9 @@ jobs:
           name: Run migrations
           command: |
             cd backend
+            npm install validator --save-dev
             npm install
+            npm ls validator
             npm audit fix --force
             npm audit
             npm run migrations > migrations_dump.txt
@@ -213,7 +215,7 @@ jobs:
       - run:
           name: Install tar utility
           command: |
-            apk install tar gzip
+            apk add --update tar gzip
       - run:
           name: Install dependencies
           command: |
@@ -221,15 +223,15 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk install python3.8
+            apk add --update python3.8
       - run:
           name: Install dependencies
           command: |
-            apk install nodejs
+            apk add --update nodejs
       - run:
           name: Install dependencies
           command: |
-            apk install npm
+            apk add --update npm
       - attach_workspace:
           at: ~/
       - run:
@@ -261,7 +263,7 @@ jobs:
       - run:
           name: Install tar utility
           command: |
-            apk install tar gzip
+            apk add --update tar gzip
       - run:
           name: Install dependencies
           command: |
@@ -269,11 +271,11 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk install nodejs
+            apk add --update nodejs
       - run:
           name: Install dependencies
           command: |
-            apk install npm
+            apk add --update npm
       - run:
           name: Deploy backend
           command: |
