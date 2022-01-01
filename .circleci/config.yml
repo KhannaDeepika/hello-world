@@ -193,7 +193,6 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            npm update
             npm install
             npm audit fix --force
             npm audit
@@ -214,7 +213,7 @@ jobs:
       - run:
           name: Install tar utility
           command: |
-            apt-get install -y tar gzip
+            apk install -y tar gzip
       - run:
           name: Install dependencies
           command: |
@@ -222,15 +221,15 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apt-get install python3.8
+            apk install python3.8
       - run:
           name: Install dependencies
           command: |
-            apt install nodejs
+            apk install nodejs
       - run:
           name: Install dependencies
           command: |
-            apt install npm
+            apk install npm
       - attach_workspace:
           at: ~/
       - run:
@@ -262,7 +261,7 @@ jobs:
       - run:
           name: Install tar utility
           command: |
-            apt-get install -y tar gzip
+            apk install -y tar gzip
       - run:
           name: Install dependencies
           command: |
@@ -270,11 +269,11 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apt install nodejs
+            apk install nodejs
       - run:
           name: Install dependencies
           command: |
-            apt install npm
+            apk install npm
       - run:
           name: Deploy backend
           command: |
