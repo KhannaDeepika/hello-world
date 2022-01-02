@@ -358,4 +358,5 @@ workflows:
           requires: [deploy-backend, deploy-frontend]  
           context: Udacity
       - cloudfront-update:
-          requires: [smoke-test]          
+          requires: [smoke-test]  
+          context: Udacity        
