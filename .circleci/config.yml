@@ -303,10 +303,10 @@ jobs:
             then
                 # Change this to 0 after the job fails
               return 1
-            - destroy_environment
+            - destroy-environment
             else
               return 1
-            - destroy_environment
+            - destroy-environment
             fi                                                                
 
   
