@@ -156,13 +156,13 @@ jobs:
             touch inventory
             echo [all] > inventory  
             aws ec2 describe-instances \
-            --query 'Reservations[*].Instances[*].PublicIpAddress' \
-            --filters "Name=tag:project,Values=udapeople" \
+            --query 'Reservations[*].Instances[*].PublicIpAddress'  \
+            --filters "Name=tag:project,Values=udapeople"  \
             --output text >> inventory
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/.circleci/ansible/inventory.txt
+            - hello-world/.circleci/ansible/inventory.txt
 
   configure-infrastructure: 
     docker:
@@ -226,7 +226,7 @@ jobs:
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
-            --filters "Name=tag:project,Values=udapeople"\
+            --filters "Name=tag:project,Values=udapeople" \
             --output text)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "API_URL = ${API_URL}"
@@ -299,7 +299,7 @@ jobs:
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
-            --filters "Name=tag:project,Values=udapeople"\
+            --filters "Name=tag:project,Values=udapeople" \
             --output text)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "API_URL = ${API_URL}"
