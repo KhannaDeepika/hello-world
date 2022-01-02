@@ -302,13 +302,10 @@ jobs:
             if curl -s ${URL}
             then
               return 1
-            - destroy-environment
-            when: on_fail
             else
               return 1
-            - destroy-environment
-            when: on_fail
-            fi                                                                
+            fi  
+      - destroy-environment                                                              
 
   
 workflows:
