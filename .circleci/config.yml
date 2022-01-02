@@ -304,15 +304,9 @@ jobs:
           command: |
             apk add --update curl
       - run:
-          name: Install dependencies
-          command: |
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            ./aws/install -i /usr/local/aws -b /usr/local/bin/aws
-      - run:
           name: Get backend url
           command: |
-            export BACKEND_IP=$(sudo aws ec2 describe-instances \
+            export BACKEND_IP=$(aws ec2 describe-instances \
              --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:project,Values=udapeople"\
               --output text)
