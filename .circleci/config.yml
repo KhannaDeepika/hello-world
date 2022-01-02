@@ -286,23 +286,12 @@ jobs:
       - run:
           name: Install tar utility
           command: |
-            apk add --update tar gzip
+            yum install -y tar gzip
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --update nodejs
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --update npm
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --update curl
+            curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+            yum install -y nodejs
       - run:
           name: Get backend url
           command: |
