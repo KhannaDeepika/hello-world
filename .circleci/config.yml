@@ -162,7 +162,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - hello-world/.circleci/ansible/inventory.txt
+            - project/.circleci/ansible/inventory.txt
 
   configure-infrastructure: 
     docker:
