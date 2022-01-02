@@ -301,11 +301,28 @@ jobs:
             echo ${URL} 
             if curl -s ${URL}
             then
-              return 1
+              exit 0
             else
-              return 1
+              exit 1
             fi  
-      - destroy-environment                                                              
+
+  cloudfront-update:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: Install tar utility
+          command: |
+            yum install -y tar gzip
+      - run:
+          name: Update cloudfront distribution
+          command: |
+            aws cloudformation deploy \
+            --template-file .circleci/files/cloudfront.yml \
+            --stack-name InitialStack \
+            --parameter-overrides WorkflowID="udapeople-${CIRCLE_WORKFLOW_ID:0:7}" \
+            --tags project=udapeople                                                          
 
   
 workflows:
@@ -339,4 +356,6 @@ workflows:
           requires: [configure-infrastructure]
       - smoke-test:
           requires: [deploy-backend, deploy-frontend]  
-          context: Udacity          
+          context: Udacity
+      - cloudfront-update:
+          requires: [smoke-test]          
