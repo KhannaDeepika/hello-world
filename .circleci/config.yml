@@ -389,3 +389,4 @@ workflows:
           context: Udacity 
       - cleanup:
           requires: [cloudfront-update]           
+          context: Udacity
