@@ -275,7 +275,7 @@ workflows:
       - setup_aws_cli:
           context: Udacity
       - deploy-infrastructure:
-          requires: [setup_aws_cli, test-frontend, test-backend, scan-frontend, scan-backend]
+          requires: [setup_aws_cli]
           context: Udacity
       - configure-infrastructure:
           requires: [deploy-infrastructure]
