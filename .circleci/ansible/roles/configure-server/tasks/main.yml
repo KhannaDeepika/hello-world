@@ -4,7 +4,7 @@
    src: ../../backend/artefacts.tar.gz
    dest: /home/ubuntu/
    owner: ubuntu
-   remote_src: no
+   remote_src: yes
   
 - name: "upgrade packages."
   become: true
