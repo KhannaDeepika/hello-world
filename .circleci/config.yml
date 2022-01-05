@@ -256,9 +256,9 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints: ["30:fc:2a:af:8f:cc:1c:30:ea:91:bb:b6:a9:f1:4d:0c"]
-      - attach_workspace:
       - restore_cache:
           keys: [deploy-backend]
+      - attach_workspace:    
           at: ~/ 
       - run:
           name: Install tar utility
