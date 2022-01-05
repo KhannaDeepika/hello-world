@@ -257,6 +257,8 @@ jobs:
       - add_ssh_keys:
           fingerprints: ["30:fc:2a:af:8f:cc:1c:30:ea:91:bb:b6:a9:f1:4d:0c"]
       - attach_workspace:
+      - restore_cache:
+          keys: [deploy-backend]
           at: ~/ 
       - run:
           name: Install tar utility
@@ -412,10 +414,11 @@ workflows:
       - run-migrations:
           requires: [configure-infrastructure]
       - deploy-frontend:
-          requires: [configure-infrastructure]
+          requires: [run-migrations]
           context: Udacity
       - deploy-backend:
-          requires: [configure-infrastructure]
+          requires: [run-migrations]
+          context: Udacity
       - smoke-test:
           requires: [deploy-backend, deploy-frontend]  
           context: Udacity
