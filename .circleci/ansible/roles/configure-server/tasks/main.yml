@@ -1,4 +1,3 @@
----
 
 - name: "Extract artifact.tar.gz file to EC2 instance"
   unarchive:
@@ -20,7 +19,7 @@
    state: present
    update_cache: yes
     
-- name:"Install netstat tool"
+- name: "Install netstat tool"
   become: yes
   apt:
    name: ["net-tools"]
@@ -33,10 +32,10 @@
     cd /home/ubuntu/
     npm install pm2 -g
     
--name: "Check if port 3030 is open"
- become: yes
- become_user: ubuntu
- shell: |
+- name: "Check if port 3030 is open"
+  become: yes
+  become_user: ubuntu
+  shell: |
    cd /home/ubuntu/dist
    pm2 list
    pm2 stop default
@@ -45,4 +44,4 @@
    netstat -tulpn
    curl localhost:3030/api/status
    netstat -tulpn
- ignore_errors: true  
+  ignore_errors: true  
