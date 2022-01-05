@@ -413,6 +413,7 @@ workflows:
           requires: [deploy-infrastructure]
       - run-migrations:
           requires: [configure-infrastructure]
+          context: Udacity
       - deploy-frontend:
           requires: [run-migrations]
           context: Udacity
