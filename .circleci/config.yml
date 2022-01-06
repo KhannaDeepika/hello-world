@@ -295,7 +295,7 @@ jobs:
             echo TYPEORM_PORT=$TYPEORM_PORT >> "dist/.env"
             echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> "dist/.env"
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> "dist/.env"
-            echo TYPEORM_DATABASE=$TYPEORM_DATABASE-1 >> "dist/.env"
+            echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "dist/.env"
             echo NODE_PATH=/home/ubuntu/dist/node_modules >> "dist/.env"
             tar -czvf artefacts.tar.gz ./dist
             cd ..
