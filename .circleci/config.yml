@@ -289,8 +289,8 @@ jobs:
             echo VERSION=1 >> "dist/.env"
             echo TYPEORM_CONNECTION=postgres >> "dist/.env"
             echo TYPEORM_MIGRATIONS_DIR=./src/migrations >> "dist/.env"
-            echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts >> "dist/.env"
-            echo TYPEORM_MIGRATIONS=./src/migrations/*.entity.ts >> "dist/.env"
+            echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.js >> "dist/.env"
+            echo TYPEORM_MIGRATIONS=./src/migrations/*.entity.js >> "dist/.env"
             echo TYPEORM_HOST=$TYPEORM_HOST >> "dist/.env"
             echo TYPEORM_PORT=$TYPEORM_PORT >> "dist/.env"
             echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> "dist/.env"
@@ -406,6 +406,7 @@ workflows:
           context: Udacity
       - configure-infrastructure:
           requires: [deploy-infrastructure]
+          context: Udacity
       - run-migrations:
           requires: [configure-infrastructure]
           context: Udacity
