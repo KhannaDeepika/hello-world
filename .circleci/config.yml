@@ -254,12 +254,12 @@ jobs:
       - image: python:3.7-alpine3.11
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints: ["30:fc:2a:af:8f:cc:1c:30:ea:91:bb:b6:a9:f1:4d:0c"]
-      - restore_cache:
-          keys: [deploy-backend]
       - attach_workspace:    
-          at: ~/ 
+          at: ~/
+      - restore_cache:
+          keys: [backend-build]
+      - add_ssh_keys:
+          fingerprints: ["30:fc:2a:af:8f:cc:1c:30:ea:91:bb:b6:a9:f1:4d:0c"]    
       - run:
           name: Install tar utility
           command: |
@@ -406,7 +406,6 @@ workflows:
           context: Udacity
       - configure-infrastructure:
           requires: [deploy-infrastructure]
-          context: Udacity
       - run-migrations:
           requires: [configure-infrastructure]
           context: Udacity
